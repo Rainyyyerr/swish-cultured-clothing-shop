@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP - SWISH X REVERE</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h2 class="auth-title">SIGN UP</h2>
+        <form class="signup-form">
+            <div class="input-group">
+                <div class="input-group">
+                    <label for="email" class="input-label">EMAIL</label>
+                    <input type="email" id="email" class="input-field" required>
+                </div>
+                <label for="username" class="input-label">USERNAME</label>
+                <input type="text" id="username" class="input-field" required>
+            </div>
+            <div class="input-group">
+                <label for="password" class="input-label">PASSWORD</label>
+                <div style="position: relative;">
+                    <input type="password" id="password" class="input-field" required>
+                    <span class="password-toggle">👁️</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password" class="input-label">CONFIRM PASSWORD</label>
+                <div style="position: relative;">
+                    <input type="password" id="confirm-password" class="input-field" required>
+                    <span class="password-toggle">👁️</span>
+                </div>
+            </div>
+            <button type="submit" class="auth-btn">SIGN UP</button>
+            <div class="auth-switch">
+                <span>Already have an account? </span>
+                <a href="login.html" class="auth-link">LOG IN</a>
+            </div>
+        </form>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

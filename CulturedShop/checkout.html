@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHECKOUT - SWISH X REVERE</title>
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="#">
+                    <img src="logo1.png" alt="Swish Clothing Logo" class="logo-img">
+                </a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="Index.html">HOME</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+            <li><a href="Size.html">SIZE CHART</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li class="nav-icon"><a href="#"><i class="ri-shopping-cart-line"></i></a></li>
+            <li class="nav-icon"><a href="#"><i class="ri-search-line"></i></a></li>
+        </ul>
+    </nav>
+
+    <div class="section__container">
+        <div class="checkout-container">
+            <h2 class="section__header">CHECKOUT</h2>
+
+            <form action="process-order.php" method="POST" class="checkout-grid">
+                <div class="checkout-section order-summary">
+                    <h3 class="checkout-title">Order Summary</h3>
+                    <div id="orderItems">
+                    </div>
+                    <div class="order-totals">
+                        <div>
+                            <span>Subtotal:</span>
+                            <span id="orderSubtotal">₱0</span>
+                        </div>
+                        <div>
+                            <span>Tax (12%):</span>
+                            <span id="orderTax">₱0</span>
+                        </div>
+                        <div class="order-total">
+                            <span>Total:</span>
+                            <span id="orderTotal">₱0</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn place-order-btn">PLACE ORDER</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cart = JSON.parse(localStorage.getItem('swishCart')) || [];
+            const orderItems = document.getElementById('orderItems');
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'order-item';
+                itemElement.innerHTML = `
+                        <span>${item.name} (${item.size}) × ${item.quantity}</span>
+                        <span>₱${itemTotal.toLocaleString()}</span>
+                    `;
+                orderItems.appendChild(itemElement);
+            });
+
+            const tax = subtotal * 0.12;
+            const total = subtotal + tax;
+
+            document.getElementById('orderSubtotal').textContent = `₱${subtotal.toLocaleString()}`;
+            document.getElementById('orderTax').textContent = `₱${tax.toLocaleString()}`;
+            document.getElementById('orderTotal').textContent = `₱${total.toLocaleString()}`;
+        });
+    </script>
+</body>
+</html>

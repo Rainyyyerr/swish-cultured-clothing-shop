@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SWISH</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shop.css">
+
+</head>
+<body>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="index.html">
+                    <img src="logo1.png" alt="Swish Clothing Logo" class="logo-img">
+                </a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+            <li><a href="Size.html">SIZE CHART</a></li>
+            <li><a href="about.html" class="active">ABOUT US</a></li>
+            <li><a href="#" id="cartToggle"><i class="ri-shopping-cart-line"></i></a></li>
+            <li><a href="landing.html" id="logoutBtn"><i class="ri-logout-box-r-line"></i></a></li>
+        </ul>
+    </nav>
+
+    <main class="about-container">
+        <div class="about-content">
+            <h1>WELCOME TO THE CLUB.</h1>
+            <p>Founded in Davao City in 2024, SWISH started as a passion project inspired by the local underground band scene. Driven by the founder's love for graphic design, the brand quickly grew into a canvas for bold illustrations and creative exploration. Over time, SWISH gained a dedicated following among bands, artists, and athletes, evolving into one of the Philippines' most recognized yet versatile local brands. Today, SWISH stands as a testament to fearless creativity—constantly adapting, always in pursuit of the new.</p>
+        </div>
+    </main>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>CHECKOUT</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+
+        <div class="cart-steps">
+            <!-- Cart Items -->
+            <div class="cart-step active" id="stepCart">
+                <div class="cart-items" id="cartItems"></div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">₱0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (12%):</span>
+                        <span id="cartTax">₱0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="cartTotal">₱0</span>
+                    </div>
+                </div>
+                <button class="btn checkout-next" id="toCustomerInfo">PROCEED TO ORDER</button>
+            </div>
+
+            <!-- Customer Info -->
+            <div class="cart-step" id="stepCustomer">
+                <h4 class="step-title">CONTACT INFORMATION</h4>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" class="form-control" id="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone" class="form-control" id="customerPhone" required>
+                </div>
+
+                <h4 class="step-title">SHIPPING ADDRESS</h4>
+                <div class="form-group double">
+                    <input type="text" placeholder="First Name" class="form-control" id="firstName" required>
+                    <input type="text" placeholder="Last Name" class="form-control" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Address" class="form-control" id="customerAddress" required>
+                </div>
+                <div class="form-group double">
+                    <input type="text" placeholder="City" class="form-control" id="customerCity" required>
+                    <input type="text" placeholder="ZIP Code" class="form-control" id="customerZip" required>
+                </div>
+
+                <div class="step-buttons">
+                    <button class="btn btn-back" id="backToCart">BACK</button>
+                    <button class="btn checkout-next" id="toPayment">CONTINUE TO PAYMENT</button>
+                </div>
+            </div>
+
+            <!-- Payment -->
+            <div class="cart-step" id="stepPayment">
+                <h4 class="step-title">PAYMENT METHOD</h4>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="gcash" checked>
+                        <img src="gcash.png" alt="GCash" width="60">
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="cod">
+                        <span>Cash on Delivery</span>
+                    </label>
+                </div>
+
+                <div class="order-summary">
+                    <h4 class="step-title">ORDER SUMMARY</h4>
+                    <div id="finalItems"></div>
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="finalSubtotal">₱0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (12%):</span>
+                            <span id="finalTax">₱0</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="finalTotal">₱0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-buttons">
+                    <button class="btn btn-back" id="backToCustomer">BACK</button>
+                    <button class="btn place-order" id="placeOrder">PLACE ORDER</button>
+                </div>
+            </div>
+
+            <!-- Confirmation -->
+            <div class="cart-step" id="stepConfirm">
+                <div class="confirmation-message">
+                    <i class="ri-checkbox-circle-fill"></i>
+                    <h3>ORDER CONFIRMED!</h3>
+                    <p>Thank you for your purchase</p>
+                    <button class="btn" id="closeAfterConfirm">BACK TO SHOP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
